@@ -1,0 +1,88 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* Palette: white base with olive greens and a warm clay accent */
+  --color-olive-950: #1c2310;
+  --color-olive-900: #2f3a18;
+  --color-olive-800: #3f4d20;
+  --color-olive-700: #54652b;
+  --color-olive-600: #6b7d3a;
+
+  --color-clay-600: #a85d1a;
+  --color-clay-500: #c9843f;
+  --color-clay-400: #dba868;
+  --color-clay-300: #ecd0a6;
+
+  --color-paper: #fdfdfa;
+  --color-paper-dim: #f1f2e8;
+  --color-ink: #232a16;
+  --color-ink-soft: #5b6347;
+
+  --color-verified: #3f7d4e;
+  --color-verified-soft: #e6f1e5;
+  --color-alert: #b4432e;
+  --color-alert-soft: #f8e4df;
+
+  /* Type */
+  --font-display: "Fraunces", "Georgia", serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+  }
+
+  ::selection {
+    background: var(--color-clay-300);
+    color: var(--color-olive-950);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-clay-500);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer utilities {
+  .glass {
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .glass-light {
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(47, 58, 24, 0.08);
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
